@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lwm2mclient.h" />
+    <ClInclude Include="Lwm2m_library\include\commandline.h" />
+    <ClInclude Include="Lwm2m_library\include\connection.h" />
+    <ClInclude Include="Lwm2m_library\include\dtlsconnection.h" />
+    <ClInclude Include="Lwm2m_library\include\er-coap-13.h" />
+    <ClInclude Include="Lwm2m_library\include\gcc_Debug.h" />
+    <ClInclude Include="Lwm2m_library\include\gcc_Release.h" />
+    <ClInclude Include="Lwm2m_library\include\internals.h" />
+    <ClInclude Include="Lwm2m_library\include\liblwm2m.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\aes\rijndael.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\alert.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\ccm.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\crypto.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\dtls.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\dtls_config.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\dtls_debug.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\dtls_time.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\ecc\ecc.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\global.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\hmac.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\netq.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\numeric.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\peer.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\prng.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\session.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\sha2\sha2.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\state.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\tinydtls.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\uthash.h" />
+    <ClInclude Include="Lwm2m_library\include\tinydtls\utlist.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Lwm2m_library\include\tinydtls\aes\rijndael.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\ccm.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\crypto.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\dtls.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\dtls_debug.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\dtls_time.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\ecc\ecc.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\hmac.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\netq.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\peer.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\session.c" />
+    <ClCompile Include="Lwm2m_library\include\tinydtls\sha2\sha2.c" />
+    <ClCompile Include="Lwm2m_library\src\block1.c" />
+    <ClCompile Include="Lwm2m_library\src\bootstrap.c" />
+    <ClCompile Include="Lwm2m_library\src\commandline.c" />
+    <ClCompile Include="Lwm2m_library\src\data.c" />
+    <ClCompile Include="Lwm2m_library\src\discover.c" />
+    <ClCompile Include="Lwm2m_library\src\dtlsconnection.c" />
+    <ClCompile Include="Lwm2m_library\src\er-coap-13.c" />
+    <ClCompile Include="Lwm2m_library\src\json.c" />
+    <ClCompile Include="Lwm2m_library\src\liblwm2m.c" />
+    <ClCompile Include="Lwm2m_library\src\list.c" />
+    <ClCompile Include="Lwm2m_library\src\management.c" />
+    <ClCompile Include="Lwm2m_library\src\memtrace.c" />
+    <ClCompile Include="Lwm2m_library\src\objects.c" />
+    <ClCompile Include="Lwm2m_library\src\object_access_control.c" />
+    <ClCompile Include="Lwm2m_library\src\object_connectivity_moni.c" />
+    <ClCompile Include="Lwm2m_library\src\object_connectivity_stat.c" />
+    <ClCompile Include="Lwm2m_library\src\object_device.c" />
+    <ClCompile Include="Lwm2m_library\src\object_firmware.c" />
+    <ClCompile Include="Lwm2m_library\src\object_location.c" />
+    <ClCompile Include="Lwm2m_library\src\object_security.c" />
+    <ClCompile Include="Lwm2m_library\src\object_server.c" />
+    <ClCompile Include="Lwm2m_library\src\observe.c" />
+    <ClCompile Include="Lwm2m_library\src\packet.c" />
+    <ClCompile Include="Lwm2m_library\src\platform.c" />
+    <ClCompile Include="Lwm2m_library\src\registration.c" />
+    <ClCompile Include="Lwm2m_library\src\system_api.c" />
+    <ClCompile Include="Lwm2m_library\src\tlv.c" />
+    <ClCompile Include="Lwm2m_library\src\transaction.c" />
+    <ClCompile Include="Lwm2m_library\src\uri.c" />
+    <ClCompile Include="Lwm2m_library\src\utils.c" />
+    <ClCompile Include="PressureSensor.c" />
+    <ClCompile Include="pr_3323.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{67bbea0f-d737-4ee0-981a-96917dfc1986}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>Pressure_Sensor</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Generic</TargetLinuxPlatform>
+    <LinuxProjectType>{2238F9CD-F817-4ECC-BD14-2524D2669B35}</LinuxProjectType>
+    <ProjectName>Pressure_Sensor</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <RemoteRootDir>/home/src</RemoteRootDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>\Lwm2m_Library\Lwm2m_library;/usr/include;/usr/include/api_client_c;/usr/include/lwm2m;/usr/include/openssl;/usr/include/arm-linux-gnueabihf</IncludePath>
+    <LibraryPath>/usr/lib</LibraryPath>
+    <RemoteCCompileToolExe>gcc</RemoteCCompileToolExe>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <IncludePath>../Pressure_Sensor;./Lwm2m_library;./Lwm2m_library/include;../include;/usr/include;/usr/include/api_client_c;/usr/include/lwm2m;/usr/include/openssl;/usr/include/arm-linux-gnueabihf</IncludePath>
+    <LibraryPath>/usr/lib</LibraryPath>
+    <RemoteCCompileToolExe>gcc</RemoteCCompileToolExe>
+    <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Platform)\$(Configuration)\</IntDir>
+    <RemoteProjectDir>/home/src/$(ProjectName)</RemoteProjectDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>DEBUG=1; LWM2M_SUPPORT_JSON=1;LWM2M_CLIENT_MODE=1; LWM2M_BOOTSTRAP=1; WITH_TINYDTLS=1;</PreprocessorDefinitions>
+      <CLanguageStandard>gnu99</CLanguageStandard>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>apiclient;curl;lwm2m;m;crypto;ssl;uuid;etcazure;pthread</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <CLanguageStandard>gnu99</CLanguageStandard>
+      <PreprocessorDefinitions>LWM2M_SUPPORT_JSON=1;LWM2M_CLIENT_MODE=1; LWM2M_BOOTSTRAP=1;</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ThreadSafeStatics>
+      </ThreadSafeStatics>
+      <RuntimeTypeInfo>
+      </RuntimeTypeInfo>
+      <CompileAs>CompileAsC</CompileAs>
+      <CAdditionalWarning>switch;no-deprecated-declarations;empty-body;return-type;parentheses;no-pointer-sign;no-format;uninitialized;unreachable-code;unused-value;</CAdditionalWarning>
+      <CppAdditionalWarning>switch;no-deprecated-declarations;empty-body;return-type;parentheses;no-format;uninitialized;unreachable-code;unused-value;</CppAdditionalWarning>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <AdditionalOptions>
+      </AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <LibraryDependencies>apiclient;curl;lwm2m;m;crypto;ssl;uuid;etcazure;pthread</LibraryDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
