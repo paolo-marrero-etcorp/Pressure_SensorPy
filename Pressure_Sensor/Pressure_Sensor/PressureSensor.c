@@ -1055,7 +1055,7 @@ int main(int argc, char *argv[])
 
     /* This checks to make sure each object has been successfully created in order to initiate a Bootstrap request to the LWM2M Server */
  
-    char serverUri[50];
+    char serverUri[128];
     int serverId = 123;
 #ifdef WITH_TINYDTLS
     sprintf (serverUri, "coaps://%s:%s", server, serverPort);
