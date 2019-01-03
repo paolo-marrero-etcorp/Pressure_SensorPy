@@ -149,8 +149,8 @@
     <IncludePath>../Pressure_Sensor;./Lwm2m_library;./Lwm2m_library/include;../include;/usr/include;/usr/include/api_client_c;/usr/include/lwm2m;/usr/include/openssl;/usr/include/arm-linux-gnueabihf</IncludePath>
     <LibraryPath>/usr/lib</LibraryPath>
     <RemoteCCompileToolExe>gcc</RemoteCCompileToolExe>
-    <OutDir>$(ProjectDir)bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(ProjectDir)obj\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)bin\$(Configuration)\</OutDir>
+    <IntDir>$(ProjectDir)obj\$(Configuration)\</IntDir>
     <RemoteProjectDir>/home/src/$(ProjectName)</RemoteProjectDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -165,7 +165,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
       <CLanguageStandard>gnu99</CLanguageStandard>
-      <PreprocessorDefinitions>LWM2M_SUPPORT_JSON=1;LWM2M_CLIENT_MODE=1; LWM2M_BOOTSTRAP=1;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;LWM2M_SUPPORT_JSON=1;LWM2M_CLIENT_MODE=1; LWM2M_BOOTSTRAP=1;</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ThreadSafeStatics>
       </ThreadSafeStatics>
@@ -179,7 +179,7 @@
       </AdditionalOptions>
     </ClCompile>
     <Link>
-      <LibraryDependencies>apiclient;curl;lwm2m;m;crypto;ssl;uuid;etcazure;pthread</LibraryDependencies>
+      <LibraryDependencies>apiclient;curl;lwm2m;m;crypto;ssl;pthread</LibraryDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
