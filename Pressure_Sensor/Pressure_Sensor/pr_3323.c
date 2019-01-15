@@ -228,6 +228,7 @@ static uint8_t prv_write(uint16_t instanceId,
 static uint8_t prv_delete(uint16_t id,
                           lwm2m_object_t * objectP)
 {
+    /*
     prv_instance_t * targetP;
 
     objectP->instanceList = lwm2m_list_remove(objectP->instanceList, id, (lwm2m_list_t **)&targetP);
@@ -236,6 +237,8 @@ static uint8_t prv_delete(uint16_t id,
     lwm2m_free(targetP);
 
     return COAP_202_DELETED;
+    */
+    return COAP_405_METHOD_NOT_ALLOWED;
 }
 
 static uint8_t prv_create(uint16_t instanceId,
