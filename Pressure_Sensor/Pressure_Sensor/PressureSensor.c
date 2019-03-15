@@ -997,7 +997,7 @@ int main(int argc, char *argv[])
     /* Obtain analog settings for use in LWM2M */
     AnalogProcessConfig analog_process_config;
     int analogProcessConfigResult;
-    analogProcessConfigResult = read_analog_process_config(&analog_process_config);
+    analogProcessConfigResult = read_analog_process_config(&analog_process_config, "pressure_reading");
     minVoltage = analog_process_config.AI1.min_voltage;
     maxVoltage = analog_process_config.AI1.max_voltage;
     minSensor = analog_process_config.AI1.min_sensor;
