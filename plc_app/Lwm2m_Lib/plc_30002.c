@@ -932,7 +932,6 @@ static uint8_t prv_write(uint16_t instanceId,
             }
             break;
         case 2:
-            return COAP_405_METHOD_NOT_ALLOWED;
             {
                 uint64_t value;
                 if (1 != lwm2m_data_decode_int(dataArray + i, &value))

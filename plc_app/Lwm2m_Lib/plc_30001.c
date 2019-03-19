@@ -419,6 +419,13 @@ static uint8_t prv_exec(uint16_t instanceId,
                         lwm2m_object_t * objectP)
 {
     int result;
+    int i;
+    uint64_t value;
+    uint8_t *buffer_ptr;
+    uint8_t exec_arg_1[2];
+    uint8_t exec_arg_2[8];
+    unsigned short reg_buf[MAX_REGS_TO_RES];
+    unsigned char char_buf[MAX_REGS_TO_RES];
     unsigned char buf[] = { 1, 0 };
     
     if (NULL == lwm2m_list_find(objectP->instanceList, instanceId)) return COAP_404_NOT_FOUND;
@@ -443,8 +450,56 @@ static uint8_t prv_exec(uint16_t instanceId,
         result = write_coil(FRIENDLY_NAME, modbus_stn_id, 9, buf, 1);
         return COAP_204_CHANGED;
     case 9:
-        result = write_coil(FRIENDLY_NAME, modbus_stn_id, 4, buf, 1);
-        return COAP_204_CHANGED;
+        if (length < 3)
+        {
+            // Argument payload is too short. Min would be something like this: "1,1"
+            return COAP_400_BAD_REQUEST;
+        }
+        buffer_ptr = buffer;
+        if ((*buffer_ptr != '0') && (*buffer_ptr != '1') && (*buffer_ptr != '2'))
+        {
+            // Invalid first arg
+            return COAP_400_BAD_REQUEST;
+        }
+        else
+        {
+            buffer_ptr++;
+            if (*buffer_ptr != ',')
+            {
+                return COAP_400_BAD_REQUEST;
+            }
+            else
+            {
+                buffer_ptr--;
+                exec_arg_1[0] = *buffer_ptr;
+                exec_arg_1[1] = 0x00;
+                buffer_ptr += 2;  // point at exec_arg_2
+            }
+            for (i = 0; i < (length - 2); i++)
+            {
+                if ((*buffer_ptr >= '0') && (*buffer_ptr <= '9'))
+                {
+                    exec_arg_2[i] = *buffer_ptr++;
+                }
+                else
+                {
+                    return COAP_400_BAD_REQUEST;
+                }
+            }
+            exec_arg_2[i] = 0x00;
+            value = atoi(exec_arg_2);
+            reg_buf[1] = value >> 16;
+            reg_buf[2] = value;
+            value = atoi(exec_arg_1);
+            reg_buf[0] = value;
+            result = write_holding(FRIENDLY_NAME, modbus_stn_id, 15, reg_buf, 3);
+            if (result != 0)
+            {
+                return COAP_400_BAD_REQUEST;
+            }
+            return COAP_204_CHANGED;
+        }
+
     default:
         return COAP_404_NOT_FOUND;
     }
