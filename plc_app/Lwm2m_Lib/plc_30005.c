@@ -301,6 +301,7 @@ uint8_t poll_30005_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH, uint16_
         if (result == 0)
         {
             targetP->sensorRange = reg_buf[0];
+            targetP->sensorRange /= 10;
         }
         else
         {
@@ -375,6 +376,7 @@ uint8_t poll_30005_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH, uint16_
         if (result == 0)
         {
             targetP->virtualSensorValue = reg_buf[0];
+            targetP->virtualSensorValue /= 10;
         }
         else
         {
@@ -412,6 +414,7 @@ uint8_t poll_30005_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH, uint16_
         if (result == 0)
         {
             targetP->sensorValue = reg_buf[0];
+            targetP->sensorValue /= 10;
         }
         else
         {
@@ -647,6 +650,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->sensorRange = reg_buf[0];
+                    targetP->sensorRange /= 10;
                     lwm2m_data_encode_float(targetP->sensorRange, *dataArrayP + i);    
                 }
                 else
@@ -711,6 +715,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->virtualSensorValue = reg_buf[0];
+                    targetP->virtualSensorValue /= 10;
                     lwm2m_data_encode_float(targetP->virtualSensorValue, *dataArrayP + i);    
                 }
                 else
@@ -743,6 +748,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->sensorValue = reg_buf[0];
+                    targetP->sensorValue /= 10;
                     lwm2m_data_encode_float(targetP->sensorValue, *dataArrayP + i);    
                 }
                 else
@@ -862,6 +868,8 @@ static uint8_t prv_write(uint16_t instanceId,
     prv_instance_t * targetP;
     int i;
     int result;
+    double temp_float;
+    char ascii_float[32];
     int modbusReg;
     unsigned short reg_buf[MAX_REGS_TO_RES];
     unsigned char char_buf[MAX_REGS_TO_RES];
@@ -945,7 +953,11 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             } 
-            reg_buf[0] = targetP->sensorRange;
+            /* Convert float to int before storing in register as documented format: 1000 = 100.0*/
+            temp_float = targetP->sensorRange;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             switch (instanceId)
             {
             case 0:
@@ -979,8 +991,12 @@ static uint8_t prv_write(uint16_t instanceId,
             if (1 != lwm2m_data_decode_float(dataArray + i, &(targetP->virtualSensorValue)))
             {
                 return COAP_400_BAD_REQUEST;
-            } 
-            reg_buf[0] = targetP->virtualSensorValue;
+            }
+            /* Convert float to int before storing in register as documented format: 1000 = 100.0*/
+            temp_float = targetP->virtualSensorValue;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             switch (instanceId)
             {
             case 0:

@@ -1197,6 +1197,9 @@ static void set_controller_time_format(uint8_t *polling_enabled)
         fprintf(stdout, "Error opening controller result = %d.\r\n", result);
 #endif        
     }
+    /* noticed seemingly incorrect results reading time format register. H:M:S should return 1 */
+    /* but saw it was returning a 0. Try introduce a short delay after opening controller. */
+    usleep(100000);  
     result = read_coils(FRIENDLY_NAME, modbus_stn_id, 7, 1, char_buf);
     if (result != 0)
     {
@@ -1212,7 +1215,7 @@ static void set_controller_time_format(uint8_t *polling_enabled)
     }
     if (result != 0)  // time format seconds = 0, H:M:S = 1
         {
-            result = write_coil(FRIENDLY_NAME, modbus_stn_id, 7, &coil_write_buffer[1], 0);        // Time format = Seconds
+            result = write_coil(FRIENDLY_NAME, modbus_stn_id, 7, &coil_write_buffer[1], 1);        // Time format = Seconds
             if(result != 0)
             {
                 *polling_enabled = 0;
@@ -1222,6 +1225,7 @@ static void set_controller_time_format(uint8_t *polling_enabled)
 #endif        
             }       
         }
+    usleep(100000);
     result = write_coil(FRIENDLY_NAME, modbus_stn_id, 1, &coil_write_buffer[1], 1);       // close
     if(result != 0)
     {

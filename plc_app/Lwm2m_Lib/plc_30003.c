@@ -279,6 +279,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->openTubingTrip = reg_buf[0];
+            targetP->openTubingTrip /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -291,6 +292,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->openTubingReset = reg_buf[0];
+            targetP->openTubingReset /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -336,6 +338,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->openCasingTrip = reg_buf[0];
+            targetP->openCasingTrip /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -348,6 +351,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->openCasingReset = reg_buf[0];
+            targetP->openCasingReset /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -393,6 +397,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->openCasingLineDiffTrip = reg_buf[0];
+            targetP->openCasingLineDiffTrip /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -405,6 +410,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->openCasingLineDiffReset = reg_buf[0];
+            targetP->openCasingLineDiffReset /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -450,6 +456,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->closeCasingTrip = reg_buf[0];
+            targetP->closeCasingTrip /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -462,6 +469,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->closeCasingReset = reg_buf[0];
+            targetP->closeCasingReset /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -488,6 +496,7 @@ uint8_t poll_30003_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->closeCasingPressureThrPerMin = reg_buf[0];
+            targetP->closeCasingPressureThrPerMin /= 10;
         }
         lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
@@ -696,6 +705,9 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->openTubingTrip = reg_buf[0];
+                    printf("openTubingTrip float = %f\n", targetP->openTubingTrip);
+                    targetP->openTubingTrip /= 10;
+                    printf("openTubingTrip divided by 10 = %f\n", targetP->openTubingTrip);
                     lwm2m_data_encode_float(targetP->openTubingTrip, *dataArrayP + i);    
                 }
                 else
@@ -708,6 +720,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->openTubingReset = reg_buf[0];
+                    targetP->openTubingReset /= 10;
                     lwm2m_data_encode_float(targetP->openTubingReset, *dataArrayP + i);    
                 }
                 else
@@ -753,6 +766,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->openCasingTrip = reg_buf[0];
+                    targetP->openCasingTrip /= 10;
                     lwm2m_data_encode_float(targetP->openCasingTrip, *dataArrayP + i);    
                 }
                 else
@@ -765,6 +779,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->openCasingReset = reg_buf[0];
+                    targetP->openCasingReset /= 10;
                     lwm2m_data_encode_float(targetP->openCasingReset, *dataArrayP + i);    
                 }
                 else
@@ -810,6 +825,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->openCasingLineDiffTrip = reg_buf[0];
+                    targetP->openCasingLineDiffTrip /= 10;
                     lwm2m_data_encode_float(targetP->openCasingLineDiffTrip, *dataArrayP + i);    
                 }
                 else
@@ -822,6 +838,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->openCasingLineDiffReset = reg_buf[0];
+                    targetP->openCasingLineDiffReset /= 10;
                     lwm2m_data_encode_float(targetP->openCasingLineDiffReset, *dataArrayP + i);    
                 }
                 else
@@ -867,6 +884,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->closeCasingTrip = reg_buf[0];
+                    targetP->closeCasingTrip /= 10;
                     lwm2m_data_encode_float(targetP->closeCasingTrip, *dataArrayP + i);    
                 }
                 else
@@ -879,6 +897,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->closeCasingReset = reg_buf[0];
+                    targetP->closeCasingReset /= 10;
                     lwm2m_data_encode_float(targetP->closeCasingReset, *dataArrayP + i);    
                 }
                 else
@@ -905,6 +924,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->closeCasingPressureThrPerMin = reg_buf[0];
+                    targetP->closeCasingPressureThrPerMin /= 10;
                     lwm2m_data_encode_float(targetP->closeCasingPressureThrPerMin, *dataArrayP + i);    
                 }
                 else
@@ -1054,6 +1074,8 @@ static uint8_t prv_write(uint16_t instanceId,
     prv_instance_t * targetP;
     int i;
     int result;
+    double temp_float;
+    char ascii_float[32];
     unsigned short reg_buf[MAX_REGS_TO_RES];
     unsigned char char_buf[MAX_REGS_TO_RES];
     
@@ -1142,7 +1164,14 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             }
-            reg_buf[0] = targetP->openTubingTrip;
+            /* Convert float to int before storing in register as documented format: 1000 = 100.0*/
+            temp_float = targetP->openTubingTrip;
+            printf("openTubingTrip = %f\n", temp_float);
+            temp_float *= 10;
+            printf("openTubingTrip multiplied by 10 = %f\n", temp_float);
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
+            printf("reg_buf[0] = %d\n", reg_buf[0]);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 334, reg_buf, 1);
             if (result != 0)
             {
@@ -1154,7 +1183,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             }
-            reg_buf[0] = targetP->openTubingReset;
+            temp_float = targetP->openTubingReset;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 335, reg_buf, 1);
             if (result != 0)
             {
@@ -1198,7 +1230,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             }
-            reg_buf[0] = targetP->openCasingTrip;
+            temp_float = targetP->openCasingTrip;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 264, reg_buf, 1);
             if (result != 0)
             {
@@ -1210,7 +1245,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             } 
-            reg_buf[0] = targetP->openCasingReset;
+            temp_float = targetP->openCasingReset;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 265, reg_buf, 1);
             if (result != 0)
             {
@@ -1254,7 +1292,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             } 
-            reg_buf[0] = targetP->openCasingLineDiffTrip;
+            temp_float = targetP->openCasingLineDiffTrip;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 274, reg_buf, 1);
             if (result != 0)
             {
@@ -1266,7 +1307,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             } 
-            reg_buf[0] = targetP->openCasingLineDiffReset;
+            temp_float = targetP->openCasingLineDiffReset;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 275, reg_buf, 1);
             if (result != 0)
             {
@@ -1310,8 +1354,11 @@ static uint8_t prv_write(uint16_t instanceId,
             if (1 != lwm2m_data_decode_float(dataArray + i, &(targetP->openCasingTrip)))
             {
                 return COAP_400_BAD_REQUEST;
-            } 
-            reg_buf[0] = targetP->openCasingTrip;
+            }
+            temp_float = targetP->openCasingTrip;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 280, reg_buf, 1);
             if (result != 0)
             {
@@ -1323,7 +1370,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             } 
-            reg_buf[0] = targetP->openCasingReset;
+            temp_float = targetP->openCasingReset;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 281, reg_buf, 1);
             if (result != 0)
             {
@@ -1348,7 +1398,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             } 
-            reg_buf[0] = targetP->closeCasingPressureThrPerMin;
+            temp_float = targetP->closeCasingPressureThrPerMin;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 279, reg_buf, 1);
             if (result != 0)
             {

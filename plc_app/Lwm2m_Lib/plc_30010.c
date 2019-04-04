@@ -152,6 +152,7 @@ uint8_t poll_30010_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->flowRateTrip = reg_buf[0];
+            targetP->flowRateTrip /= 10;
             lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
             fprintf(stderr, "Flow Rate Trip: %f\n", targetP->flowRateTrip);
@@ -164,6 +165,7 @@ uint8_t poll_30010_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->flowRateReset = reg_buf[0];
+            targetP->flowRateReset /= 10;
             lwm2m_resource_value_changed(lwm2mH, &uri);
 #ifdef WITH_LOGS
             fprintf(stderr, "Flow Rate Reset: %f\n", targetP->flowRateReset);
@@ -207,10 +209,12 @@ static uint8_t prv_read(uint16_t instanceId,
         (*dataArrayP)[0].id = 1;
         result = read_holding(FRIENDLY_NAME, modbus_stn_id, 314, 1, reg_buf);
         targetP->flowRateTrip = reg_buf[0];
+        targetP->flowRateTrip /= 10;
         lwm2m_data_encode_float(targetP->flowRateTrip, *dataArrayP + 0);   
         (*dataArrayP)[1].id = 2; 
         result = read_holding(FRIENDLY_NAME, modbus_stn_id, 315, 1, reg_buf);
         targetP->flowRateReset = reg_buf[0];
+        targetP->flowRateReset /= 10;
         lwm2m_data_encode_float(targetP->flowRateReset, *dataArrayP + 1);
         (*dataArrayP)[2].id = 3; 
         result = read_holding(FRIENDLY_NAME, modbus_stn_id, 316, 2, reg_buf);
@@ -245,6 +249,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->flowRateTrip = reg_buf[0];
+                    targetP->flowRateTrip /= 10;
                     lwm2m_data_encode_float(targetP->flowRateTrip, *dataArrayP + i);    
                 }
                 else
@@ -257,6 +262,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->flowRateReset = reg_buf[0];
+                    targetP->flowRateReset /= 10;
                     lwm2m_data_encode_float(targetP->flowRateReset, *dataArrayP + i);    
                 }
                 else
@@ -351,6 +357,8 @@ static uint8_t prv_write(uint16_t instanceId,
     prv_instance_t * targetP;
     int i;
     int result;
+    double temp_float;
+    char ascii_float[32];
     unsigned short reg_buf[MAX_REGS_TO_RES];
     unsigned char char_buf[MAX_REGS_TO_RES];
     
@@ -366,7 +374,11 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             }
-            reg_buf[0] = targetP->flowRateTrip;
+            /* Convert float to int before storing in register as documented format: 1000 = 100.0*/
+            temp_float = targetP->flowRateTrip;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 314, reg_buf, 1);
             if (result != 0)
             {
@@ -378,7 +390,10 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             }
-            reg_buf[0] = targetP->flowRateReset;
+            temp_float = targetP->flowRateReset;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 315, reg_buf, 1);
             if (result != 0)
             {

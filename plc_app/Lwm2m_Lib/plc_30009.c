@@ -152,6 +152,7 @@ uint8_t poll_30009_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->diffPressureTrip = reg_buf[0];
+            targetP->diffPressureTrip /= 10;
         }
         else
         {
@@ -168,6 +169,7 @@ uint8_t poll_30009_object(lwm2m_object_t *obj, lwm2m_context_t * lwm2mH)
         if (result == 0)
         {
             targetP->diffPressureReset = reg_buf[0];
+            targetP->diffPressureReset /= 10;
         }
         else
         {
@@ -243,10 +245,12 @@ static uint8_t prv_read(uint16_t instanceId,
         (*dataArrayP)[0].id = 1;
         result = read_holding(FRIENDLY_NAME, modbus_stn_id, 294, 1, reg_buf);
         targetP->diffPressureTrip = reg_buf[0];
+        targetP->diffPressureTrip /= 10;
         lwm2m_data_encode_float(targetP->diffPressureTrip, *dataArrayP + 0);   
         (*dataArrayP)[1].id = 2; 
         result = read_holding(FRIENDLY_NAME, modbus_stn_id, 295, 1, reg_buf);
         targetP->diffPressureReset = reg_buf[0];
+        targetP->diffPressureReset /= 10;
         lwm2m_data_encode_float(targetP->diffPressureReset, *dataArrayP + 1);
         (*dataArrayP)[2].id = 3; 
         result = read_holding(FRIENDLY_NAME, modbus_stn_id, 296, 2, reg_buf);
@@ -281,6 +285,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->diffPressureTrip = reg_buf[0];
+                    targetP->diffPressureTrip /= 10;
                     lwm2m_data_encode_float(targetP->diffPressureTrip, *dataArrayP + i);    
                 }
                 else
@@ -293,6 +298,7 @@ static uint8_t prv_read(uint16_t instanceId,
                 if (result == 0)
                 {
                     targetP->diffPressureReset = reg_buf[0];
+                    targetP->diffPressureReset /= 10;
                     lwm2m_data_encode_float(targetP->diffPressureReset, *dataArrayP + i);    
                 }
                 else
@@ -387,6 +393,8 @@ static uint8_t prv_write(uint16_t instanceId,
     prv_instance_t * targetP;
     int i;
     int result;
+    double temp_float;
+    char ascii_float[32];
     unsigned short reg_buf[MAX_REGS_TO_RES];
     unsigned char char_buf[MAX_REGS_TO_RES];
     
@@ -402,7 +410,11 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             }
-            reg_buf[0] = targetP->diffPressureTrip;
+            /* Convert float to int before storing in register as documented format: 1000 = 100.0*/
+            temp_float = targetP->diffPressureTrip;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 294, reg_buf, 1);
             if (result != 0)
             {
@@ -414,7 +426,11 @@ static uint8_t prv_write(uint16_t instanceId,
             {
                 return COAP_400_BAD_REQUEST;
             }
-            reg_buf[0] = targetP->diffPressureReset;
+            /* Convert float to int before storing in register as documented format: 1000 = 100.0*/
+            temp_float = targetP->diffPressureReset;
+            temp_float *= 10;
+            sprintf(ascii_float, "%.0f", temp_float);
+            reg_buf[0] = atoi(ascii_float);
             result = write_holding(FRIENDLY_NAME, modbus_stn_id, 295, reg_buf, 1);
             if (result != 0)
             {
