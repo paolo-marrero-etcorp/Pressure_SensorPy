@@ -29,7 +29,14 @@ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE<br/>
 iptables -t nat -A POSTROUTING -o br-7e20d24e642b -j MASQUERADE<br/>
 
 ### Quick Morpheus Install Steps:
-
+- clone morpheus-examples: git clone https://github.com/ETCorp/morpheus-examples<br/>
+- scp the Anjay folder to the Morpheus user app: scp -P 32768 -r Anjay root@192.168.50.xxx://home/src,<br/>
+- within the user app: /home/src/Anjay/cmake .<br/>
+- then: /home/src/Anjay/make all<br/>
+(make -j given below seems to create a compile error on the Morpheus)<br/>
+- using security credentials ID = phil and PSK = 3132333435 as an example:<br/>
+/home/src/Anjay/output/bin/demo --server-uri coaps://lwm2m-etc-server.canadaeast.cloudapp.azure.com:5684 --endpoint-name f45eabf3-7821-0002-5141-edca3b945ccc --lifetime 30 --security-mode psk --identity 7068696c --key 3132333435<br/>
+  
 ## End of Morpheus Specific Installation Notes:
 The project has been created and is actively maintained by [AVSystem](https://www.avsystem.com).
 
