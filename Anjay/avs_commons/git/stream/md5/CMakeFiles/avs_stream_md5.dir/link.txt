@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../../output/lib/libavs_stream_md5.a  CMakeFiles/avs_stream_md5.dir/src/md5_common.c.o CMakeFiles/avs_stream_md5.dir/src/stream_mbedtls.c.o
+/usr/bin/ranlib ../../../../output/lib/libavs_stream_md5.a

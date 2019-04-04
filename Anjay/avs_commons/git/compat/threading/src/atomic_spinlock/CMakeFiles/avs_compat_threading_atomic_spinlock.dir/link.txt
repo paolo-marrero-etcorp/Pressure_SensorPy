@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../../../../output/lib/libavs_compat_threading_atomic_spinlock.a  CMakeFiles/avs_compat_threading_atomic_spinlock.dir/condvar.c.o CMakeFiles/avs_compat_threading_atomic_spinlock.dir/mutex.c.o CMakeFiles/avs_compat_threading_atomic_spinlock.dir/init_once.c.o
+/usr/bin/ranlib ../../../../../../output/lib/libavs_compat_threading_atomic_spinlock.a

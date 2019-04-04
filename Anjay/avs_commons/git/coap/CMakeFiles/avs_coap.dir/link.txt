@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../output/lib/libavs_coap.a  CMakeFiles/avs_coap.dir/src/block_builder.c.o CMakeFiles/avs_coap.dir/src/block_utils.c.o CMakeFiles/avs_coap.dir/src/ctx.c.o CMakeFiles/avs_coap.dir/src/msg_builder.c.o CMakeFiles/avs_coap.dir/src/msg.c.o CMakeFiles/avs_coap.dir/src/msg_info.c.o CMakeFiles/avs_coap.dir/src/msg_opt.c.o CMakeFiles/avs_coap.dir/src/opt.c.o CMakeFiles/avs_coap.dir/src/tx_params.c.o CMakeFiles/avs_coap.dir/src/msg_cache.c.o
+/usr/bin/ranlib ../../../output/lib/libavs_coap.a

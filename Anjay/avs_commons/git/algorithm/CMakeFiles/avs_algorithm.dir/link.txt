@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../output/lib/libavs_algorithm.a  CMakeFiles/avs_algorithm.dir/src/base64.c.o
+/usr/bin/ranlib ../../../output/lib/libavs_algorithm.a

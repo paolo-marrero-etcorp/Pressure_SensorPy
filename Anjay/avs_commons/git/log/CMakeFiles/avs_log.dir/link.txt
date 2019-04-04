@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../output/lib/libavs_log.a  CMakeFiles/avs_log.dir/src/log.c.o
+/usr/bin/ranlib ../../../output/lib/libavs_log.a
