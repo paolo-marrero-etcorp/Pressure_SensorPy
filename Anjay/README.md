@@ -9,6 +9,23 @@ Anjay is a C library that aims to be the reference implementation of the OMA Lig
 
 ## Morpheus Specific Installation Notes:
 
+When building the user app in Morpheus App Builder add this in Package Install List:
+sed -i 's/jessie/stretch/g' /etc/apt/sources.list
+apt-get update
+apt-get -y install git build-essential cmake libmbedtls-dev zlib1g-dev Doxygen
+
+A potentially useful tip to allow full internet access for your user app can be achieved by running the following commands:
+on the Supervisor:
+iptables -A FORWARD -i eth0 -o eth2 -j ACCEPT
+iptables -A FORWARD -i eth2 -o eth0 -j ACCEPT
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o eth2 -j MASQUERADE
+on the Host:
+iptables -A FORWARD -i eth0 -o br-7e20d24e642b -j ACCEPT
+iptables -A FORWARD -i br-7e20d24e642b -o eth0 -j ACCEPT
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o br-7e20d24e642b -j MASQUERADE
+
 The project has been created and is actively maintained by [AVSystem](https://www.avsystem.com).
 
 -   [Full documentation](https://AVSystem.github.io/Anjay-doc/)
