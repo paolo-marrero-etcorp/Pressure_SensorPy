@@ -7,6 +7,8 @@
 
 Anjay is a C library that aims to be the reference implementation of the OMA Lightweight Machine-to-Machine (LwM2M) device management protocol. It eases development of fully-featured LwM2M client applications by taking care of protocol details, allowing the user to focus on device-specific aspects.
 
+## Morpheus Specific Installation Notes:
+
 The project has been created and is actively maintained by [AVSystem](https://www.avsystem.com).
 
 -   [Full documentation](https://AVSystem.github.io/Anjay-doc/)
