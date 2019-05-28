@@ -5,6 +5,18 @@
 # (C) 2001 - 2018 Extreme Telematics Corp
 # ------------------------------------------------------------------------------ #
 
+# Friendly Names ----------------------------------------------------------------#
+#
+# AI1 = A_1
+# AI2 = Analog2
+# DO = LED1
+# SENPWR = SENPWR
+# COM1 = COM1 (functionality = MODBUS)
+# COM2 = COM2 (functionality = MODBUS)
+#
+# ------------------------------------------------------------------------------ #
+
+
 # Header files ----------------------------------------------------------------- #
 from api_client import http
 from api_client import modbus
