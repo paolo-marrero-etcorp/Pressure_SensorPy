@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../../output/lib/libavs_vector.a  CMakeFiles/avs_vector.dir/src/vector.c.o
-/usr/bin/ranlib ../../../output/lib/libavs_vector.a

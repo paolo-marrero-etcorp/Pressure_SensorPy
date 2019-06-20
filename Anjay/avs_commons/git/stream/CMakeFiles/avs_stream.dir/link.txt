@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../../output/lib/libavs_stream.a  CMakeFiles/avs_stream.dir/src/stream.c.o CMakeFiles/avs_stream.dir/src/stream_buffered.c.o CMakeFiles/avs_stream.dir/src/stream_file.c.o CMakeFiles/avs_stream.dir/src/stream_inbuf.c.o CMakeFiles/avs_stream.dir/src/stream_membuf.c.o CMakeFiles/avs_stream.dir/src/stream_outbuf.c.o CMakeFiles/avs_stream.dir/src/stream_simple_io.c.o
-/usr/bin/ranlib ../../../output/lib/libavs_stream.a

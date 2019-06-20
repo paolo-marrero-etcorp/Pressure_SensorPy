@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../../output/lib/libavs_persistence.a  CMakeFiles/avs_persistence.dir/src/persistence.c.o
-/usr/bin/ranlib ../../../output/lib/libavs_persistence.a

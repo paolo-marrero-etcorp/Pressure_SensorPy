@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../../output/lib/libavs_list.a  CMakeFiles/avs_list.dir/src/list.c.o
-/usr/bin/ranlib ../../../output/lib/libavs_list.a

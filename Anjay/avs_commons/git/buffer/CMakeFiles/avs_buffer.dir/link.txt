@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../../output/lib/libavs_buffer.a  CMakeFiles/avs_buffer.dir/src/buffer.c.o
-/usr/bin/ranlib ../../../output/lib/libavs_buffer.a

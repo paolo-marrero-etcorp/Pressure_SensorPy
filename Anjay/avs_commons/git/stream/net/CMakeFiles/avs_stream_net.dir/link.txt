@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../../../output/lib/libavs_stream_net.a  CMakeFiles/avs_stream_net.dir/src/stream_net.c.o CMakeFiles/avs_stream_net.dir/src/netbuf.c.o
-/usr/bin/ranlib ../../../../output/lib/libavs_stream_net.a

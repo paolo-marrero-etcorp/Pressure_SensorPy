@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../../output/lib/libavs_utils.a  CMakeFiles/avs_utils.dir/src/cleanup.c.o CMakeFiles/avs_utils.dir/src/hexlify.c.o CMakeFiles/avs_utils.dir/src/numbers.c.o CMakeFiles/avs_utils.dir/src/strings.c.o CMakeFiles/avs_utils.dir/src/time.c.o CMakeFiles/avs_utils.dir/src/token.c.o CMakeFiles/avs_utils.dir/compat/posix/compat_time.c.o CMakeFiles/avs_utils.dir/compat/stdlib/memory.c.o
-/usr/bin/ranlib ../../../output/lib/libavs_utils.a
